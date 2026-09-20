@@ -1,0 +1,7 @@
+import type {BasketItem,Song} from './types';
+export const normalize=(s:string)=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase();
+export function collection(items:BasketItem[],query='',sort='latest') {const found=items.filter(i=>i.isPublished&&normalize([i.title,i.caption,...i.tags,...i.mood,i.type==='song'?i.artist:''].join(' ')).includes(normalize(query))); return sort==='popular'?found.filter((i):i is Song=>i.type==='song').sort((a,b)=>b.favoriteCount-a.favoriteCount):found.sort((a,b)=>Date.parse(b.publishedAt)-Date.parse(a.publishedAt));}
+export function randomSong(items:BasketItem[],exclude?:string) {const songs=items.filter((i):i is Song=>i.type==='song'&&i.isPublished&&!!i.audioUrl);return songs.filter(i=>i.id!==exclude)[Math.floor(Math.random()*songs.filter(i=>i.id!==exclude).length)]??songs[0];}
+export function layout(ids:string[],random=false){const spots=[[4,8,-17],[19,-5,-8],[34,-3,15],[48,1,23],[61,7,-10],[78,17,13],[8,36,18],[23,28,-14],[39,26,8],[53,33,-19],[68,30,17],[80,45,-12],[10,57,12],[26,55,22],[41,57,-16],[56,56,-8],[37,40,15],[73,56,12]];return Object.fromEntries(ids.map((id,i)=>{const [x,y,r]=spots[i%spots.length];return [id,{x:random?Math.random()*78:x,y:random?Math.random()*61:y,rotation:random?(Math.random()-.5)*60:r,z:random?Math.floor(Math.random()*30):i+1}]}))}
+export const time=(n:number)=>`${Math.floor((n||0)/60)}:${String(Math.floor((n||0)%60)).padStart(2,'0')}`;
+
