@@ -1,0 +1,19 @@
+import {describe,it,expect} from 'vitest';import {collection,layout,randomSong} from '../src/lib';import {mockMedia} from '../src/data';import {media,uploads} from '../src/services';import worker,{publicMedia} from '../server/worker';
+describe('library and basket',()=>{it('matches Vietnamese accents, artist, mood and tags',()=>{expect(collection(mockMedia,'quai nhon')).toHaveLength(18);expect(collection(mockMedia,'HANI PHAM')).toHaveLength(6);expect(collection(mockMedia,'nhe nhang')).toHaveLength(18);expect(collection(mockMedia,'not found')).toEqual([])});it('sorts newest and aggregate popularity independently',()=>{expect(collection(mockMedia)[0].id).toBe('memory-0');expect(collection(mockMedia,'','popular')[0].favoriteCount).toBe(206);expect(collection(mockMedia,'','popular').every(x=>x.type==='song')).toBe(true)});it('shuffles layout without changing records or identity',()=>{const before=JSON.stringify(mockMedia);const ids=mockMedia.map(i=>i.id);expect(layout(ids,true)).not.toEqual(layout(ids));expect(Object.keys(layout(ids,true))).toEqual(ids);expect(JSON.stringify(mockMedia)).toBe(before)});it('random playback only chooses published playable songs',()=>{expect(randomSong(mockMedia)).toBeUndefined();const song={...mockMedia[0],audioUrl:'/test.wav'};for(let i=0;i<20;i++)expect(randomSong([...mockMedia,song])?.id).toBe(song.id)});it('stable IDs resolve selected records',async()=>{expect((await media.get('memory-2'))?.title).toBe('Nắng qua hiên nhà')})});
+describe('service boundaries',()=>{it('demo owner flow is explicitly simulated, and logout revokes sessions',async()=>{await uploads.login();expect((await uploads.session()).demo).toBe(true);expect((await uploads.session()).authorized).toBe(true);await uploads.logout();expect((await uploads.session()).authorized).toBe(false)});it('real writes fail closed without backend auth', async () => {
+  const url = 'https://example.test/api/admin/upload/song';
+  const missingOrigin = await worker.fetch(
+    new Request(url, { method: 'POST' }),
+    {},
+  );
+  expect(missingOrigin.status).toBe(403);
+
+  const missingSession = await worker.fetch(
+    new Request(url, {
+      method: 'POST',
+      headers: { Origin: 'https://example.test' },
+    }),
+    {},
+  );
+  expect(missingSession.status).toBe(401);
+});it('public model excludes internal Drive IDs',()=>{const value=publicMedia({id:'safe',drive_file_id:'private',cover_drive_file_id:null,deleted_at:null,artist:'Hani Pham',type:'song',title:'Title',caption:'',tags:'[]',mood:'[]',published_at:'2026-01-01',is_published:1,favorite_count:2,play_count:0,duration_sec:null});expect(JSON.stringify(value)).not.toContain('private');expect(value.imageUrl).toBe('/api/media/safe/cover')})});
