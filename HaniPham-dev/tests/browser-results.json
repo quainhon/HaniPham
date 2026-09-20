@@ -1,0 +1,5 @@
+{
+  "passed": null,
+  "status": "NOT RERUN after Google owner-auth integration",
+  "reason": "npm ci unavailable in this sandbox; run npm ci && npm run build && npm test and browser checks in Codespaces"
+}

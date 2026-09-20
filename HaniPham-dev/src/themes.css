@@ -1,0 +1,64 @@
+/* Theme-specific presentation. Media and playback state are shared across themes. */
+.theme-toggle{position:absolute;right:calc(3% + 132px);top:18px;z-index:8;gap:7px;padding:8px 12px;border:1px solid #f5e7cc50;background:#443425ad;color:#fff5e5;font-family:'Be Vietnam Pro',sans-serif;font-size:10px;backdrop-filter:blur(12px)}
+.theme-switch-track{display:block;width:29px;height:16px;background:#cfad86;border-radius:20px;padding:2px}.theme-switch-track>span{display:block;width:12px;height:12px;border-radius:50%;background:#fff7e9;transition:transform .25s}.theme-toggle[aria-checked=true] .theme-switch-track{background:#a78860}.theme-toggle[aria-checked=true] .theme-switch-track>span{transform:translateX(13px)}.night-artwork{display:none}
+html[data-theme=night]{color-scheme:dark;--rose:#c8a16e;--paper:#302722;background:#211d19;color:#eedfca}
+[data-theme=night] body{background:radial-gradient(ellipse at 13% 47%,#5e453329,transparent 45%),radial-gradient(ellipse at 95% 78%,#77536019,transparent 38%),#211d19;color:#eedfca}
+[data-theme=night] .hero{height:475px;background:#211d19;overflow:hidden}
+[data-theme=night] .hero:before{background:radial-gradient(ellipse at 73% 8%,#b8894242,transparent 37%),radial-gradient(ellipse at 32% 100%,#70563c21,transparent 50%),linear-gradient(110deg,#171815,#28231d 68%,#1d1b18)}
+[data-theme=night] .portrait,[data-theme=night] .hero-note,[data-theme=night] .left-note{display:none}
+[data-theme=night] .hero-shade{background:repeating-linear-gradient(118deg,transparent 0 80px,#e3b75c02 81px 84px,transparent 85px 190px);z-index:-1}
+[data-theme=night] .hero:after{background:linear-gradient(transparent,#211d1980 55%,#211d19);height:50px}
+[data-theme=night] .brand{color:#ecd4ad;font-size:43px;top:25px}[data-theme=night] .brand span{color:#b88d9c}[data-theme=night] .brand small{color:#bea988}
+[data-theme=night] .hero-copy{left:15.7%;top:145px;color:#f2e3c9;max-width:420px}
+[data-theme=night] .hero-copy .eyebrow{display:block;font-family:'Be Vietnam Pro',sans-serif;font-size:9px;letter-spacing:3px;color:#ba9e78;margin-bottom:20px}
+[data-theme=night] .hero-copy h1{font-size:57px;line-height:.96;font-weight:400}[data-theme=night] .hero-copy h1 em{color:#ba8e9d}
+[data-theme=night] .hero-copy>p:not(.eyebrow){color:#c7b99f;font-size:19px;line-height:1.35;margin:16px 0 21px;text-shadow:none}
+[data-theme=night] .night-artwork{display:block;position:absolute;right:14%;top:30px;width:390px;margin:0;transform:rotate(2deg);z-index:1}
+.night-artwork img{display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 20px 60px #0008,0 0 0 1px #d7b37b3d;object-fit:contain}
+.night-artwork figcaption{font-family:'Dancing Script',cursive;font-size:20px;text-align:center;color:#c1a986;margin-top:12px}
+[data-theme=night] .upload-button,[data-theme=night] .theme-toggle{color:#dec9a8;background:#29231dc9;border-color:#b999653d}
+[data-theme=night] .primary{background:linear-gradient(120deg,#bf945f,#aa8050);color:#211a12;box-shadow:0 5px 18px #0003;font-weight:600}
+[data-theme=night] .primary:hover{background:#d0aa75}
+[data-theme=night] .soft{background:#45352d;color:#dfc4ac;border-color:#725544}
+[data-theme=night] button:focus-visible,[data-theme=night] input:focus-visible,[data-theme=night] select:focus-visible,[data-theme=night] textarea:focus-visible{outline-color:#ddb278}
+[data-theme=night] .library:before{background:#211d19;mask:url('/images/paper-edge.svg') center top/100% 66px no-repeat;filter:none}
+[data-theme=night] .library:after{background:radial-gradient(ellipse at 22% 0,#62463019,transparent 65%),linear-gradient(#211d19,#211d19)}
+[data-theme=night] .library-title>svg{color:#c8a16e}[data-theme=night] .library-title h2{color:#eedbc0}[data-theme=night] .library-title p{color:#bba78d}
+[data-theme=night] .search,[data-theme=night] .library-toolbar select{background:#2b2620;border-color:#67513c;color:#e0cbb0}
+[data-theme=night] .search input{color:#efdfc9}[data-theme=night] input::placeholder{color:#a08f7a}
+[data-theme=night] .basket-stage,[data-theme=night] .basket-foreground{background-color:#aa9277;background-blend-mode:multiply}
+[data-theme=night] .basket-stage{mask-image:linear-gradient(transparent,#000 10%,#000 88%,transparent)}
+[data-theme=night] .postcard,[data-theme=night] .featured-postcard{color:#4c3428;background:linear-gradient(115deg,#f0dfc1,#d8bd99);border-color:#ba9a6c;box-shadow:2px 8px 14px #100b0873}
+[data-theme=night] .postcard:hover,[data-theme=night] .featured-postcard:hover{background:#efdfc5}
+[data-theme=night] .postcard img,[data-theme=night] .featured-postcard>img{filter:saturate(.62) sepia(.2) brightness(.92)}
+[data-theme=night] .note-card{background:linear-gradient(120deg,#e6cfab,#c5a880)}
+[data-theme=night] .song-mark,[data-theme=night] .featured-artist{color:#755a46}
+[data-theme=night] .basket-note,[data-theme=night] .basket-tip{background:#d8c2a8d9;color:#523e2c}
+[data-theme=night] .basket-caption{color:#b09b7e;opacity:1}
+[data-theme=night] .support{background:radial-gradient(ellipse at 30% 50%,#84605615,transparent 65%)}
+[data-theme=night] .coffee,[data-theme=night] .tributes{background:radial-gradient(ellipse at 0 0,#906c6120,transparent 65%),linear-gradient(110deg,#332a24,#2b2420);border-color:#70584355;box-shadow:0 8px 18px -12px #0009,inset 0 0 25px #a6805e06}
+[data-theme=night] .coffee:before,[data-theme=night] .tributes:before{border-color:#ad85612e}
+[data-theme=night] .coffee h3,[data-theme=night] .tributes h3{color:#dfbea1}
+[data-theme=night] .coffee p,[data-theme=night] .tribute-row p{color:#c0a895}
+[data-theme=night] .coffee-illustration{color:#c29a75}[data-theme=night] .coffee-illustration>span{background:#332a24;color:#c4939d}
+[data-theme=night] .coffee-button{background:linear-gradient(120deg,#a37672,#875e5b);color:#fff0db;box-shadow:0 4px 10px #0003}
+[data-theme=night] .tribute-row strong{color:#e6c8aa}[data-theme=night] .tribute-row time{color:#ad9782}
+[data-theme=night] .avatar{background:linear-gradient(135deg,#6d5141,#48372d);border-color:#3b2e26;box-shadow:0 0 0 1px #9e785b55;color:#dec3a2}
+[data-theme=night] footer{color:#ab9178}
+[data-theme=night] .player{background:#2c251feF;border-color:#785b405e;box-shadow:0 8px 34px #0005;color:#edd8bb}
+[data-theme=night] .now-playing span{color:#b39f89}[data-theme=night] .play-circle{background:#87645a;color:#ffead1}
+[data-theme=night] input[type=range]{accent-color:#c79b67}[data-theme=night] .active{background:#594339;color:#edbd88}
+[data-theme=night] .audio-status{color:#c8a489}[data-theme=night] .volume .scribble{color:#c6ac91}
+[data-theme=night] .icon:hover{background:#604c3855}
+[data-theme=night] dialog{background:#302720;color:#ecd7bb;border-color:#846342}
+[data-theme=night] dialog::backdrop{background:#080906b5}
+[data-theme=night] dialog label input,[data-theme=night] dialog textarea,[data-theme=night] dialog select{background:#231e1a;color:#ead6b9;border-color:#73573e}
+[data-theme=night] dialog button:not(.primary):not(.icon){background:#45352c;color:#e5c9a6;border-color:#735c46}
+[data-theme=night] .notice{background:#4c3a29;color:#e4cbab}[data-theme=night] .error{color:#f0b2a6}
+[data-theme=night] .detail-card>p{color:#c9ac8e}[data-theme=night] .empty{background:#302720ed;color:#ecd7bb}
+@media(min-width:1500px){[data-theme=night] .hero{height:500px}[data-theme=night] .hero-copy{top:148px}[data-theme=night] .night-artwork{width:410px;right:17%}}
+@media(min-width:701px) and (max-width:1100px){[data-theme=night] .hero{height:450px}[data-theme=night] .hero-copy{left:8%;top:141px;max-width:360px}[data-theme=night] .hero-copy h1{font-size:49px}[data-theme=night] .hero-copy>p:not(.eyebrow){font-size:17px}[data-theme=night] .night-artwork{width:325px;right:5%;top:82px}[data-theme=night] .hero-copy .eyebrow{font-size:7px;letter-spacing:2px}}
+@media(max-width:700px){.theme-toggle{top:77px;right:5%;font-size:9px;padding:7px 10px;gap:5px}.theme-switch-track{width:27px}.theme-toggle[aria-checked=true] .theme-switch-track>span{transform:translateX(11px)}[data-theme=night] .hero{height:750px}[data-theme=night] .brand{font-size:35px;top:24px}[data-theme=night] .night-artwork{width:min(77vw,310px);top:128px;right:auto;left:50%;transform:translateX(-50%) rotate(2deg)}[data-theme=night] .night-artwork figcaption{font-size:18px;margin-top:9px}[data-theme=night] .hero-copy{top:495px;left:8%;right:8%;max-width:none;text-align:center}[data-theme=night] .hero-copy .eyebrow{display:none}[data-theme=night] .hero-copy h1{font-size:43px;line-height:.95}[data-theme=night] .hero-copy h1 br{display:none}[data-theme=night] .hero-copy h1 em{font-size:44px}[data-theme=night] .hero-copy>p:not(.eyebrow){font-size:17px;line-height:1.3;max-width:310px;margin:14px auto 18px}[data-theme=night] .hero-copy .primary{font-size:16px}[data-theme=night] .hero-shade{background:none}[data-theme=night] .library:before{mask-size:200% 66px}}
+@media(prefers-reduced-motion:reduce){.theme-switch-track>span{transition:none}}
+/* Keep dragged/rotated cards within the viewport during responsive transitions. */
+.basket-stage{overflow:clip}
